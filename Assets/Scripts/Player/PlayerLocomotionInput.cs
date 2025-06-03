@@ -10,6 +10,7 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
     public Quaternion LookRotation { get; private set; }
     private Matrix4x4 skewMatrix;
     public bool TimeWarpPressed { get; private set; }
+    public bool InteractPressed { get; private set; }
     #endregion
 
     #region Startup
@@ -47,6 +48,7 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
     private void LateUpdate()
     {
         TimeWarpPressed = false;
+        InteractPressed = false;
     }
     #endregion
 
@@ -58,50 +60,17 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        var direction = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y) + transform.position;
-        direction = direction - transform.position;
-        LookRotation = Quaternion.LookRotation(direction);
-    }
-
-    public void OnMouseLook(InputAction.CallbackContext context)
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
-        Vector3 aimPoint = Vector3.zero;
-
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, ~6))
-        {
-            Vector3 playerHeight = new Vector3(hit.point.x, this.transform.position.y, hit.point.z);
-            Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-
-            float length = Vector3.Distance(playerHeight, hitPoint);
-
-            var rad = 45 * Mathf.Deg2Rad;
-
-            float hypotenuse = length / (Mathf.Sin(rad));
-            float distanceFromCamera = hit.distance;
-
-            if (this.transform.position.y > hit.point.y)
-            {
-                aimPoint = castPoint.GetPoint(distanceFromCamera - hypotenuse);
-            }
-            else if (this.transform.position.y < hit.point.y)
-            {
-                aimPoint = castPoint.GetPoint(distanceFromCamera + hypotenuse);
-            }
-            else
-                aimPoint = castPoint.GetPoint(distanceFromCamera);
-        }
-
-        var direction = aimPoint - transform.position;
-        direction.y = 0;
-        LookRotation = Quaternion.LookRotation(direction);
+        //var direction = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y) + transform.position;
+        //direction = direction - transform.position;
+        //LookRotation = Quaternion.LookRotation(direction);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        if (!context.performed)
+            return;
+
+        InteractPressed = true;
     }
 
     public void OnTimeWarp(InputAction.CallbackContext context)
