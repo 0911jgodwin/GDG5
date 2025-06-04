@@ -22,6 +22,9 @@ public class TimeWarp : MonoBehaviour
             yPosition = -500f;
         else yPosition = 0f;
 
+        // switches the music
+        FindObjectOfType<MusicManager>().SwitchMusic();
+
         _player.GetComponent<Rigidbody>().Sleep();
         _player.SetActive(false);
         _player.transform.position = new Vector3(_player.transform.position.x, yPosition, _player.transform.position.z);
@@ -31,6 +34,8 @@ public class TimeWarp : MonoBehaviour
         _cameraPivot.position = new Vector3(0f, yPosition, 0f);
 
         _inPast = !_inPast;
+
+
     }
 
     private void FinishedTransition()
