@@ -10,6 +10,9 @@ public class TimeWarp : MonoBehaviour
 
     public void StartTransition()
     {
+        // switches the music
+        FindObjectOfType<MusicManager>().SwitchMusic();
+
         _transitionActive = true;
         _transitionAnimator.SetTrigger("TimeWarp");
     }
@@ -22,8 +25,7 @@ public class TimeWarp : MonoBehaviour
             yPosition = -500f;
         else yPosition = 0f;
 
-        // switches the music
-        FindObjectOfType<MusicManager>().SwitchMusic();
+
 
         _player.GetComponent<Rigidbody>().Sleep();
         _player.SetActive(false);
