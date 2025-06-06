@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager Instance;
+
     public AudioSource trackA;
     public AudioSource trackB;
 
@@ -10,6 +12,19 @@ public class MusicManager : MonoBehaviour
     private AudioSource activeTrack;
     private AudioSource inactiveTrack;
     private bool isSwitching = false;
+
+    void Awake()
+    {
+        // Singleton check
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
