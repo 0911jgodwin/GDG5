@@ -7,6 +7,9 @@ public class MusicManager : MonoBehaviour
     public AudioSource trackA;
     public AudioSource trackB;
 
+    public AudioSource sfxSource; 
+    public AudioClip transitionSFX;
+
     public float fadeDuration = 1.0f;
 
     private AudioSource activeTrack;
@@ -48,6 +51,12 @@ public class MusicManager : MonoBehaviour
     private System.Collections.IEnumerator CrossfadeTracks()
     {
         isSwitching = true;
+
+        // Play transition SFX
+        if (sfxSource != null && transitionSFX != null)
+        {
+            sfxSource.PlayOneShot(transitionSFX);
+        }
 
         float timer = 0f;
         float startVolumeActive = activeTrack.volume;
