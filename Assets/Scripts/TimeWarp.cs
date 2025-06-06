@@ -20,20 +20,20 @@ public class TimeWarp : MonoBehaviour
 
     private void ChangeScene()
     {
-        float yPosition;
+        float yOffset;
         if (_inPast)
-            yPosition = -500f;
-        else yPosition = 0f;
+            yOffset = -500f;
+        else yOffset = 500f;
 
 
 
         _player.GetComponent<Rigidbody>().Sleep();
         _player.SetActive(false);
-        _player.transform.position = new Vector3(_player.transform.position.x, yPosition, _player.transform.position.z);
+        _player.transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y + yOffset, _player.transform.position.z);
         _player.SetActive(true);
         _player.GetComponent<Rigidbody>().WakeUp();
 
-        _cameraPivot.position = new Vector3(0f, yPosition, 0f);
+        _cameraPivot.position = new Vector3(_cameraPivot.position.x, _cameraPivot.position.y +yOffset, _cameraPivot.position.z);
 
         _inPast = !_inPast;
 

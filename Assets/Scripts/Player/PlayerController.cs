@@ -101,8 +101,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float yPosition = _transitionManager._inPast ? -500f : 0f;
-        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, yPosition, this.transform.position.z), 1f);
+        float yOffset = _transitionManager._inPast ? -500f : 500f;
+        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z), 1f);
         if (!(hitColliders.Length > 0))
             _transitionManager.StartTransition();
         else
