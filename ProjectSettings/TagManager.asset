@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interactable
+  - Key
+  - Door
+  - LockedDoor
+  - PlayButton
+  - OptionsButton
   layers:
   - Default
   - TransparentFX
