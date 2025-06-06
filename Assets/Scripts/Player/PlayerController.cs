@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
         float yOffset = _transitionManager._inPast ? -500f : 500f;
-        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z), 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z), 1f, 1 << 1);
         if (!(hitColliders.Length > 0))
             _transitionManager.StartTransition();
         else
@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Door")
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             //Check if door needs key, otherwise finish level
         }
     }
