@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.GraphicsBuffer;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TimeWarp _transitionManager;
     [SerializeField] public AnimationCurve _shakeIntensity;
     [SerializeField] private bool _isDragging;
+    [SerializeField] private bool _hasKey = false;
     private bool _lerpingToPosition;
     private GameObject _draggableObject;
     private Vector3 _input;
@@ -65,6 +67,11 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        if (_nearestInteractable.tag == "PlayButton" )
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
         if (_isDragging)
         {
             _draggableObject.transform.parent = null;
@@ -159,8 +166,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Interactable")
+        if (other.tag == "Interactable" || other.tag == "PlayButton")
             _nearestInteractable = other.gameObject;
+        else if (other.tag == "Key")
+        {
+            Destroy(other.gameObject);
+            _hasKey = true;
+        }
+        else if (other.tag == "Door")
+        {
+            //Check if door needs key, otherwise finish level
+        }
     }
 
     private void OnTriggerExit(Collider other)

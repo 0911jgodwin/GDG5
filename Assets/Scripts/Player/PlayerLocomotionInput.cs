@@ -69,7 +69,6 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
     {
         if (!context.performed)
             return;
-
         InteractPressed = true;
     }
 
