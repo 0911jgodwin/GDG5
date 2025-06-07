@@ -58,5 +58,11 @@ public class Laser : MonoBehaviour
         if (_reflectiveObject != null) {
             _reflectiveObject.Reflect(this, ray, hitInfo);
         }
+
+        var _recptacleObject = hitInfo.collider.GetComponent<LaserReceptacle>();
+        if (_recptacleObject != null)
+        {
+            _recptacleObject.Open();
+        }
     }
 }
