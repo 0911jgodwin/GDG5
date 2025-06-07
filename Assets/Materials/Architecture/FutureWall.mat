@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PastFloor
-  m_Shader: {fileID: -6465566751694194690, guid: 9756bcf9ec6b1c5499bdda3b860d1083, type: 3}
+  m_Name: FutureWall
+  m_Shader: {fileID: -6465566751694194690, guid: 50cffa9681d4638489be8623475b7cc2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: e6b60cac22ada864cae15d4ca0767203, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,25 +42,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Gradient_Falloff: 0.95
-    - _Gradient_Origin: -1.21
-    - _Highlight_Cutoff: -0.28
+    - _Gradient_Falloff: 3.42
+    - _Gradient_Origin: -0.37
+    - _Highlight_Cutoff: -0.78
     - _Highlight_Intensity: 0.09
-    - _Lighting_Cutoff_1: 0.09
+    - _Lighting_Cutoff: 0.09
     - _Lighting_Cutoff_2: -0.28
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Shadow_Brightness: 0.09
     - _Shadow_Intensity: 0.09
-    - _TilingMult: 2
     m_Colors:
-    - _Base_Colour: {r: 0.4528302, g: 0.44215024, b: 0.44215024, a: 0}
-    - _Gradient_Bottom: {r: 0.622178, g: 0.23553754, b: 0.6320754, a: 0}
-    - _Gradient_Top: {r: 1, g: 1, b: 1, a: 0}
-    - _Highlight_Colour: {r: 1, g: 0.8747295, b: 0.25, a: 0}
-    - _Shadow_Colour: {r: 0, g: 0.26829147, b: 1, a: 0}
+    - _Base_Colour: {r: 0.69411767, g: 0.8235295, b: 0.92549026, a: 0}
+    - _Color: {r: 0.98612314, g: 1, b: 0.514151, a: 0}
+    - _Gradient_Bottom: {r: 0.5304379, g: 0.73761964, b: 0.754717, a: 0}
+    - _Gradient_Top: {r: 0.78823537, g: 0.87843144, b: 0.9058824, a: 0}
+    - _Highlight_Colour: {r: 1, g: 0.9118239, b: 0, a: 0}
+    - _Shadow_Colour: {r: 0.15451129, g: 0.12055002, b: 0.5943396, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &221552192879404005
+--- !u!114 &1589584282513317716
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
