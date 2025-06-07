@@ -10,15 +10,15 @@ public class TimeWarp : MonoBehaviour
 
     public void Awake()
     {
-        if (FindObjectOfType<MusicManager>().inPast == !_inPast)
+        if (FindFirstObjectByType<MusicManager>().inPast == !_inPast)
         {
-            FindObjectOfType<MusicManager>().SwitchMusic();
+            FindFirstObjectByType<MusicManager>().SwitchMusic();
         }
     }
     public void StartTransition()
     {
         // switches the music
-        FindObjectOfType<MusicManager>().SwitchMusic();
+        FindFirstObjectByType<MusicManager>().SwitchMusic();
 
         _transitionActive = true;
         _transitionAnimator.SetTrigger("TimeWarp");

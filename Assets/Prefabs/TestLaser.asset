@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.010679938, g: 0.7185027, b: 0.754717, a: 1}
   width: 0.1
+  material: {fileID: 2100000, guid: 54db1db1430ba0b49aa6a1794649b11b, type: 2}
   emissionAmount: 6.2

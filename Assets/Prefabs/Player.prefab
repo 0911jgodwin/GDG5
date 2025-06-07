@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 7963953597812847659}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   _turnSpeed: 720
   _cameraPivot: {fileID: 0}
   _transitionManager: {fileID: 0}
+  _fadeManager: {fileID: 0}
   _shakeIntensity:
     serializedVersion: 2
     m_Curve:

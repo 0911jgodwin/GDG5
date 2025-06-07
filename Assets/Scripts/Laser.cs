@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Laser : MonoBehaviour
 {
@@ -63,6 +64,12 @@ public class Laser : MonoBehaviour
         if (_recptacleObject != null)
         {
             _recptacleObject.Open();
+        }
+
+        var isPlayer = hitInfo.collider.gameObject.tag == "Player";
+        if (isPlayer)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
