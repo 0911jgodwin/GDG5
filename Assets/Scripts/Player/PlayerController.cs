@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _turnSpeed = 360;
     [SerializeField] private Transform _cameraPivot;
     [SerializeField] private TimeWarp _transitionManager;
+    [SerializeField] private FadeInOut _fadeManager;
     [SerializeField] public AnimationCurve _shakeIntensity;
     [SerializeField] private bool _isDragging;
     [SerializeField] private bool _hasKey = false;
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_nearestInteractable.tag == "PlayButton" )
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            _fadeManager.PlayFade();
             return;
         }
         if (_isDragging)
@@ -185,7 +186,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Door")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            _fadeManager.PlayFade();
             //Check if door needs key, otherwise finish level
         }
     }
@@ -194,5 +195,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Interactable")
             _nearestInteractable = null;
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

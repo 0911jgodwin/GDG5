@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408905312572754711, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1896675440}
     - target: {fileID: 3611947439541337621, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
       propertyPath: m_Name
       value: TransitionManager
@@ -387,6 +391,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
+--- !u!114 &124880992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3408905312572754711, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
+  m_PrefabInstance: {fileID: 124880991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4611572ce4ad01f44a69a288c58b7d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &183032991
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +788,10 @@ PrefabInstance:
       propertyPath: _cameraPivot
       value: 
       objectReference: {fileID: 705485536}
+    - target: {fileID: 5103927037119020775, guid: 13015a47d88bbae49a3e76c5905664db, type: 3}
+      propertyPath: _fadeManager
+      value: 
+      objectReference: {fileID: 124880992}
     - target: {fileID: 5103927037119020775, guid: 13015a47d88bbae49a3e76c5905664db, type: 3}
       propertyPath: _transitionManager
       value: 
@@ -3266,7 +3285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9092325988668148003, guid: 32c8c73e84ca6654093eddbfa38c93e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.012
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 9092325988668148003, guid: 32c8c73e84ca6654093eddbfa38c93e8, type: 3}
       propertyPath: m_LocalRotation.w
