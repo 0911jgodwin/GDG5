@@ -3,7 +3,12 @@ guid: a39f1865b857b2548acc8eacb729980a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PastGradients
+    second: {fileID: 2100000, guid: e5f0d7b05c2a42d43a3ddaaa4182cc72, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
