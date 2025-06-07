@@ -4,11 +4,12 @@ using UnityEngine;
 public class LaserReceptacle : MonoBehaviour
 {
     private bool isOpen = false;
+    [SerializeField] private GameObject lockedDoor;
     public void Open()
     {
         if (!isOpen)
         {
-            Debug.Log("TriggerOpen");
+            lockedDoor.tag = "Door";
             isOpen = true;
         }
     }

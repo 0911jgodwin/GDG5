@@ -8,6 +8,13 @@ public class TimeWarp : MonoBehaviour
     [SerializeField] public bool _inPast = true;
     [SerializeField] public bool _transitionActive = false;
 
+    public void Awake()
+    {
+        if (FindObjectOfType<MusicManager>().inPast == !_inPast)
+        {
+            FindObjectOfType<MusicManager>().SwitchMusic();
+        }
+    }
     public void StartTransition()
     {
         // switches the music
