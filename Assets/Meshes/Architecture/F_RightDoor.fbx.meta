@@ -3,7 +3,12 @@ guid: 71dda0eb6aba3cb428764aef19c9b540
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FutureGradients
+    second: {fileID: 2100000, guid: 00e3e8114522bc545856b6db921f0c46, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
