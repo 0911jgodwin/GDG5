@@ -15,6 +15,7 @@ public class MusicManager : MonoBehaviour
     private AudioSource activeTrack;
     private AudioSource inactiveTrack;
     private bool isSwitching = false;
+    [SerializeField] public bool inPast = true;
 
     void Awake()
     {
@@ -51,7 +52,7 @@ public class MusicManager : MonoBehaviour
     private System.Collections.IEnumerator CrossfadeTracks()
     {
         isSwitching = true;
-
+        inPast = !inPast;
         // Play transition SFX
         if (sfxSource != null && transitionSFX != null)
         {

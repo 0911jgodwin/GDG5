@@ -51,7 +51,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Shadow_Intensity: 0.09
-    - _TilingMult: 1
+    - _TilingMult: 5
     m_Colors:
     - _Base_Colour: {r: 0.4528302, g: 0.44215024, b: 0.44215024, a: 0}
     - _Gradient_Bottom: {r: 0.622178, g: 0.23553754, b: 0.6320754, a: 0}
