@@ -7,10 +7,12 @@ public class MusicManager : MonoBehaviour
     public AudioSource trackA;
     public AudioSource trackB;
 
+    public AudioSource movementAudioSource;
     public AudioSource sfxSource; 
     public AudioClip transitionSFX;
 
     public float fadeDuration = 1.0f;
+    public float movementVolume = 0.5f;
 
     private AudioSource activeTrack;
     private AudioSource inactiveTrack;

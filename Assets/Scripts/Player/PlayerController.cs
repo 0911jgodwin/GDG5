@@ -20,9 +20,16 @@ public class PlayerController : MonoBehaviour
     private PlayerLocomotionInput _playerLocomotionInput;
     [SerializeField] private GameObject _nearestInteractable;
 
+    private MusicManager musicManager;
+
     private void Awake()
     {
         _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
+    }
+
+    void Start()
+    {
+        musicManager = MusicManager.Instance;
     }
 
     private void Update()
@@ -40,6 +47,20 @@ public class PlayerController : MonoBehaviour
 
         if (_playerLocomotionInput.InteractPressed && _nearestInteractable != null)
             Interact();
+
+        //plays movement sound when the player is movement
+        bool isTryingToMove = _input.magnitude > 0.1f;
+
+        if (isTryingToMove)
+        {
+            if (!musicManager.movementAudioSource.isPlaying)
+                musicManager.movementAudioSource.Play();
+        }
+        else
+        {
+            if (musicManager.movementAudioSource.isPlaying)
+                musicManager.movementAudioSource.Stop();
+        }
     }
 
     private void FixedUpdate()
