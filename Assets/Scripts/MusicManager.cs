@@ -13,6 +13,7 @@ public class MusicManager : MonoBehaviour
 
     public float fadeDuration = 1.0f;
     public float movementVolume = 0.5f;
+    public float maxVolume = 1f;
 
     private AudioSource activeTrack;
     private AudioSource inactiveTrack;
@@ -35,7 +36,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         // Start both tracks, one at full volume, one muted
-        trackA.volume = 1.0f;
+        trackA.volume = maxVolume;
         trackB.volume = 0.0f;
 
         trackA.Play();
@@ -71,7 +72,7 @@ public class MusicManager : MonoBehaviour
             float t = timer / fadeDuration;
 
             activeTrack.volume = Mathf.Lerp(startVolumeActive, 0f, t);
-            inactiveTrack.volume = Mathf.Lerp(startVolumeInactive, 1f, t);
+            inactiveTrack.volume = Mathf.Lerp(startVolumeInactive, maxVolume, t);
 
             yield return null;
         }
@@ -82,6 +83,13 @@ public class MusicManager : MonoBehaviour
         inactiveTrack = temp;
 
         isSwitching = false;
+    }
+
+    public void SetMaxVolume(float volume)
+    {
+        maxVolume = volume;
+        if (!isSwitching)
+            activeTrack.volume = maxVolume;
     }
 
 }
