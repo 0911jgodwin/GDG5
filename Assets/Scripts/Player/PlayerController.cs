@@ -90,6 +90,16 @@ public class PlayerController : MonoBehaviour
             _fadeManager.PlayFade();
             return;
         }
+        if (_nearestInteractable.tag == "OptionsButton")
+        {
+            SceneManager.LoadScene("OptionsMenu");
+            return;
+        }
+        if (_nearestInteractable.tag == "GoBackButton")
+        {
+            SceneManager.LoadScene("StartMenu");
+            return;
+        }
         if (_isDragging)
         {
             _draggableObject.transform.parent = null;
@@ -219,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Interactable")
+        if (other.CompareTag("Interactable"))
             _nearestInteractable = null;
     }
 
