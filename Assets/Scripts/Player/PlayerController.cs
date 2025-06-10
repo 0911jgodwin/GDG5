@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _input;
     private PlayerLocomotionInput _playerLocomotionInput;
     [SerializeField] private GameObject _nearestInteractable;
+    [SerializeField] private GameObject[] _playerModels;
 
     private MusicManager musicManager;
 
@@ -237,5 +238,20 @@ public class PlayerController : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void SetModel(bool isInPast)
+    {
+        if (isInPast)
+        {
+            _playerModels[0].SetActive(true);
+            _playerModels[1].SetActive(false);
+        }
+        else
+        {
+            _playerModels[0].SetActive(false);
+            _playerModels[1].SetActive(true);
+        }
+
     }
 }
