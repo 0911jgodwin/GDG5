@@ -205,21 +205,21 @@ public class PlayerController : MonoBehaviour
         _lerpingToPosition = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetNearestInteractable(GameObject nearestObject)
     {
-        if (other.tag == "Interactable" || other.tag == "PlayButton")
-            _nearestInteractable = other.gameObject;
-        else if (other.tag == "Key")
+        if (nearestObject.tag == "Interactable" || nearestObject.tag == "PlayButton" || nearestObject.tag == "OptionsButton" || nearestObject.tag == "GoBackButton")
+            _nearestInteractable = nearestObject.gameObject;
+        else if (nearestObject.tag == "Key")
         {
-            Destroy(other.gameObject);
+            Destroy(nearestObject.gameObject);
             _hasKey = true;
         }
-        else if (other.tag == "Door")
+        else if (nearestObject.tag == "Door")
         {
             _fadeManager.PlayFade();
             //Check if door needs key, otherwise finish level
         }
-        else if (other.tag == "LockedDoor")
+        else if (nearestObject.tag == "LockedDoor")
         {
             if (_hasKey)
                 _fadeManager.PlayFade();
@@ -227,11 +227,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void RemoveNearestInteractable(GameObject nearestObject)
     {
-        if (other.CompareTag("Interactable"))
+        if (_nearestInteractable == nearestObject)
             _nearestInteractable = null;
     }
+
 
     public void NextScene()
     {

@@ -802,9 +802,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackA: {fileID: 409966179}
   trackB: {fileID: 1057363950}
+  movementAudioSource: {fileID: 0}
   sfxSource: {fileID: 1736701861}
   transitionSFX: {fileID: 8300000, guid: 3604972a1ad434423ab9ab283882d5c7, type: 3}
   fadeDuration: 0.83
+  movementVolume: 0.5
+  maxVolume: 1
   inPast: 1
 --- !u!114 &945878772 stripped
 MonoBehaviour:
