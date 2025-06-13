@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _input;
     private PlayerLocomotionInput _playerLocomotionInput;
     [SerializeField] private GameObject _nearestInteractable;
+    [SerializeField] private GameObject[] _playerModels;
 
     private MusicManager musicManager;
 
@@ -88,6 +89,16 @@ public class PlayerController : MonoBehaviour
         if (_nearestInteractable.tag == "PlayButton" )
         {
             _fadeManager.PlayFade();
+            return;
+        }
+        if (_nearestInteractable.tag == "OptionsButton")
+        {
+            SceneManager.LoadScene("OptionsMenu");
+            return;
+        }
+        if (_nearestInteractable.tag == "GoBackButton")
+        {
+            SceneManager.LoadScene("StartMenu");
             return;
         }
         if (_isDragging)
@@ -195,21 +206,21 @@ public class PlayerController : MonoBehaviour
         _lerpingToPosition = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetNearestInteractable(GameObject nearestObject)
     {
-        if (other.tag == "Interactable" || other.tag == "PlayButton")
-            _nearestInteractable = other.gameObject;
-        else if (other.tag == "Key")
+        if (nearestObject.tag == "Interactable" || nearestObject.tag == "PlayButton" || nearestObject.tag == "OptionsButton" || nearestObject.tag == "GoBackButton")
+            _nearestInteractable = nearestObject.gameObject;
+        else if (nearestObject.tag == "Key")
         {
-            Destroy(other.gameObject);
+            Destroy(nearestObject.gameObject);
             _hasKey = true;
         }
-        else if (other.tag == "Door")
+        else if (nearestObject.tag == "Door")
         {
             _fadeManager.PlayFade();
             //Check if door needs key, otherwise finish level
         }
-        else if (other.tag == "LockedDoor")
+        else if (nearestObject.tag == "LockedDoor")
         {
             if (_hasKey)
                 _fadeManager.PlayFade();
@@ -217,14 +228,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void RemoveNearestInteractable(GameObject nearestObject)
     {
-        if (other.tag == "Interactable")
+        if (_nearestInteractable == nearestObject)
             _nearestInteractable = null;
     }
+
 
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void SetModel(bool isInPast)
+    {
+        if (isInPast)
+        {
+            _playerModels[0].SetActive(true);
+            _playerModels[1].SetActive(false);
+        }
+        else
+        {
+            _playerModels[0].SetActive(false);
+            _playerModels[1].SetActive(true);
+        }
+
     }
 }

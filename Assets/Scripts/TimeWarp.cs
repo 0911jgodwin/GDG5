@@ -43,7 +43,7 @@ public class TimeWarp : MonoBehaviour
         _cameraPivot.position = new Vector3(_cameraPivot.position.x, _cameraPivot.position.y +yOffset, _cameraPivot.position.z);
 
         _inPast = !_inPast;
-
+        _player.GetComponent<PlayerController>().SetModel(_inPast);
 
     }
 

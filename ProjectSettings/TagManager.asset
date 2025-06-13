@@ -10,6 +10,7 @@ TagManager:
   - LockedDoor
   - PlayButton
   - OptionsButton
+  - GoBackButton
   layers:
   - Default
   - TransparentFX

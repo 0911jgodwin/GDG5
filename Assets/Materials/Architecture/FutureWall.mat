@@ -43,7 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Gradient_Falloff: 3.42
-    - _Gradient_Origin: -0.37
+    - _Gradient_Origin: -500.37
     - _Highlight_Cutoff: -0.78
     - _Highlight_Intensity: 0.09
     - _Lighting_Cutoff: 0.09
