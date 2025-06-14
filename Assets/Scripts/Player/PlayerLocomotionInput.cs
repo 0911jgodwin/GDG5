@@ -11,6 +11,8 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
     private Matrix4x4 skewMatrix;
     public bool TimeWarpPressed { get; private set; }
     public bool InteractPressed { get; private set; }
+    public bool ResetScenePressed { get; private set; }
+    public bool ResetGamePressed { get; private set; }
     #endregion
 
     #region Startup
@@ -49,6 +51,8 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
     {
         TimeWarpPressed = false;
         InteractPressed = false;
+        ResetScenePressed = false;
+        ResetGamePressed = false;
     }
     #endregion
 
@@ -78,6 +82,22 @@ public class PlayerLocomotionInput : MonoBehaviour, InputSystem_Actions.IPlayerA
             return;
 
         TimeWarpPressed = true;
+    }
+
+    public void OnResetScene(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        ResetScenePressed = true;
+    }
+
+    public void OnResetGame(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        ResetGamePressed = true;
     }
     #endregion
 }

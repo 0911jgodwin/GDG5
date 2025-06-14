@@ -62,6 +62,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6372ae5-aa39-4c0a-af73-2a3ef6e42d17"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""8fb6a4d7-1a01-4f28-81fc-fb4ffafb0e04"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +289,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""TimeWarp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10e2771c-45b1-40fa-a1e8-fbdb3ade17f2"",
+                    ""path"": ""<Keyboard>/#(L)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""142f068d-3a73-4c77-a922-c414d3f0b645"",
+                    ""path"": ""<Keyboard>/#(K)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -862,6 +902,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_TimeWarp = m_Player.FindAction("TimeWarp", throwIfNotFound: true);
+        m_Player_ResetScene = m_Player.FindAction("ResetScene", throwIfNotFound: true);
+        m_Player_ResetGame = m_Player.FindAction("ResetGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -945,6 +987,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_TimeWarp;
+    private readonly InputAction m_Player_ResetScene;
+    private readonly InputAction m_Player_ResetGame;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -953,6 +997,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @TimeWarp => m_Wrapper.m_Player_TimeWarp;
+        public InputAction @ResetScene => m_Wrapper.m_Player_ResetScene;
+        public InputAction @ResetGame => m_Wrapper.m_Player_ResetGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -974,6 +1020,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TimeWarp.started += instance.OnTimeWarp;
             @TimeWarp.performed += instance.OnTimeWarp;
             @TimeWarp.canceled += instance.OnTimeWarp;
+            @ResetScene.started += instance.OnResetScene;
+            @ResetScene.performed += instance.OnResetScene;
+            @ResetScene.canceled += instance.OnResetScene;
+            @ResetGame.started += instance.OnResetGame;
+            @ResetGame.performed += instance.OnResetGame;
+            @ResetGame.canceled += instance.OnResetGame;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -990,6 +1042,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TimeWarp.started -= instance.OnTimeWarp;
             @TimeWarp.performed -= instance.OnTimeWarp;
             @TimeWarp.canceled -= instance.OnTimeWarp;
+            @ResetScene.started -= instance.OnResetScene;
+            @ResetScene.performed -= instance.OnResetScene;
+            @ResetScene.canceled -= instance.OnResetScene;
+            @ResetGame.started -= instance.OnResetGame;
+            @ResetGame.performed -= instance.OnResetGame;
+            @ResetGame.canceled -= instance.OnResetGame;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1176,6 +1234,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnTimeWarp(InputAction.CallbackContext context);
+        void OnResetScene(InputAction.CallbackContext context);
+        void OnResetGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

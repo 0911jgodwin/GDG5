@@ -35,6 +35,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_playerLocomotionInput.ResetScenePressed)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        if (_playerLocomotionInput.ResetGamePressed)
+            SceneManager.LoadScene("StartMenu");
+
         if (_transitionManager._transitionActive || _lerpingToPosition)
             return;
 
