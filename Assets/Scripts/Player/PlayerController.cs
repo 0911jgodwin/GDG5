@@ -131,16 +131,9 @@ public class PlayerController : MonoBehaviour
 
     private void TimeWarp()
     {
-        if (_isDragging) { 
-            StartCoroutine(ScreenShake());
-            return;
-        } else
-        {
-            _nearestInteractable = null;
-        }
 
-            float yOffset = _transitionManager._inPast ? -500f : 500f;
-        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z), 0.5f);
+        float yOffset = _transitionManager._inPast ? -500f : 500f;
+        Collider[] hitColliders = Physics.OverlapSphere(new Vector3(this.transform.position.x, this.transform.position.y + yOffset, this.transform.position.z), 0.45f);
         bool collided = false;
         if ((hitColliders.Length > 0))
         {
@@ -151,8 +144,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (!collided)
+        if (!collided) { 
+            if (_isDragging)
+            {
+                _nearestInteractable = null;
+                _draggableObject.transform.parent = null;
+                _draggableObject = null;
+                _isDragging = false;
+                _rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            }
             _transitionManager.StartTransition();
+        }
         else
             StartCoroutine(ScreenShake());
     }
@@ -214,6 +216,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetNearestInteractable(GameObject nearestObject)
     {
+        if (_isDragging)
+            return;
         if (nearestObject.tag == "Interactable" || nearestObject.tag == "PlayButton" || nearestObject.tag == "OptionsButton" || nearestObject.tag == "GoBackButton")
             _nearestInteractable = nearestObject.gameObject;
         else if (nearestObject.tag == "Key")
