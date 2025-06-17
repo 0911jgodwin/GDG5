@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
                 _rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             }
             _transitionManager.StartTransition();
+            _nearestInteractable = null;
         }
         else
             StartCoroutine(ScreenShake());
@@ -222,8 +223,8 @@ public class PlayerController : MonoBehaviour
             _nearestInteractable = nearestObject.gameObject;
         else if (nearestObject.tag == "Key")
         {
+            nearestObject.GetComponent<Key>().Open();
             Destroy(nearestObject.gameObject);
-            _hasKey = true;
         }
         else if (nearestObject.tag == "Door")
         {
@@ -232,9 +233,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (nearestObject.tag == "LockedDoor")
         {
-            if (_hasKey)
-                _fadeManager.PlayFade();
-            //Check if door needs key, otherwise finish level
         }
     }
 
@@ -242,6 +240,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_nearestInteractable == nearestObject)
             _nearestInteractable = null;
+    }
+
+    public void RemoveNearestInteractable()
+    {
+        _nearestInteractable = null;
     }
 
 

@@ -9,7 +9,7 @@ public class LaserReceptacle : MonoBehaviour
     {
         if (!isOpen)
         {
-            lockedDoor.tag = "Door";
+            lockedDoor.GetComponent<Door>().OpenDoor();
             isOpen = true;
         }
     }

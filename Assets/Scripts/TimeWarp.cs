@@ -37,6 +37,7 @@ public class TimeWarp : MonoBehaviour
         _player.GetComponent<Rigidbody>().Sleep();
         _player.SetActive(false);
         _player.transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y + yOffset, _player.transform.position.z);
+        _player.GetComponent<PlayerController>().RemoveNearestInteractable();
         _player.SetActive(true);
         _player.GetComponent<Rigidbody>().WakeUp();
 
