@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6479998980883658031, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 705485535}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

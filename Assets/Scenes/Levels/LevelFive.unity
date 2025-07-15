@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6479998980883658031, guid: 6945bf70a26dd6e47bfc4b8a59d18c11, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 705485535}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3477,7 +3481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5520846484917370819, guid: d7d8b7d70a85270469c7e906b0c84379, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 3.437
       objectReference: {fileID: 0}
     - target: {fileID: 5520846484917370819, guid: d7d8b7d70a85270469c7e906b0c84379, type: 3}
       propertyPath: m_LocalPosition.y
